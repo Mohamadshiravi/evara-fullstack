@@ -1,0 +1,44 @@
+import Link from "next/link";
+import { HomeCard } from "../module/home-card";
+import { redirect } from "next/navigation";
+
+export default function AllHomes({ allHouse }) {
+  return (
+    <section data-aos="fade-up-right" className="py-20">
+      <div className="w-[95%] dark:bg-zinc-800 m-auto bg-white rounded-lg">
+        <h1 className="after:content-[''] after:absolute after:top-0 md:after:left-[45%] after:left-0 md:after:w-[100px] after:w-full after:h-[5px] after:bg-emerald-600 relative text-center moraba-bold w-full m-auto text-4xl py-4 dark:text-white">
+          همه اگهی ها
+        </h1>
+        <div className="mt-2 p-4 grid xl:grid-cols-[3fr_3fr_3fr_3fr] lg:grid-cols-[4fr_4fr_4fr] sm:grid-cols-[6fr_6fr] grid-cols-[1fr] gap-4">
+          {allHouse.map((e, i) => (
+            <HomeCard
+              key={i}
+              img={e.images[0]}
+              id={e._id}
+              title={e.title}
+              city={e.city}
+              area={e.address}
+              price={e.price}
+              room={e.room}
+              floor={e.floor}
+              meter={e.meter}
+            />
+          ))}
+        </div>
+        {allHouse.length === 0 && (
+          <div className="h-[250px] flex items-center justify-center flex-col gap-4">
+            <h2 className="text-3xl text-center">
+              هنوز هیچ خانه ای اضافه / تایید نشده
+            </h2>
+            <Link
+              href={"/new-house"}
+              className="bg-emerald-600 px-8 py-3 rounded-lg text-base text-white"
+            >
+              خانه خود را اضافه کنید
+            </Link>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
