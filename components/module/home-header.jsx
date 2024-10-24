@@ -621,7 +621,6 @@ export default function HomeHeader(prop) {
     setIsMenuOpen(false);
   }
   function SearchHandler() {
-    console.log(address);
     if (ostan === "" || shahr === "") {
       return newErrorToast("حدئقل استان و شهر را انتخاب کنید");
     } else {

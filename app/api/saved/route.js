@@ -7,7 +7,6 @@ import { cookies } from "next/headers";
 
 export async function POST(req) {
   const { houseID } = await req.json();
-  console.log(houseID);
 
   try {
     const userToken = cookies().get("token").value;
@@ -57,7 +56,6 @@ export async function POST(req) {
     });
     return Response.json({ m: "house saved" }, { status: 201 });
   } catch (e) {
-    console.log(e);
     return Response.json({ m: "error" }, { status: 500 });
   }
 }

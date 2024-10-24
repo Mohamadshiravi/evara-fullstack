@@ -30,7 +30,6 @@ export async function GET(req, { params }) {
 
     return Response.json({ data: userSaved }, { status: 200 });
   } catch (e) {
-    console.log(e);
     return Response.json({ m: "error" }, { status: 500 });
   }
 }
@@ -59,7 +58,6 @@ export async function DELETE(req, { params }) {
 
     return Response.json({ m: "house delete from saved" }, { status: 200 });
   } catch (e) {
-    console.log(e);
     return Response.json({ m: "error" }, { status: 500 });
   }
 }

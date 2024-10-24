@@ -45,7 +45,6 @@ export async function GET() {
 
     return Response.json({ data: theUser });
   } catch (e) {
-    console.log(e);
     return Response.json({ m: "error" }, { status: 500 });
   }
 }

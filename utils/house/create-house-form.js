@@ -156,7 +156,7 @@ export default async function AddNewHouseHandler(prevState, formData) {
       user: theUser._id,
       images: imagesPathArray,
     });
-    console.log("moz");
+
     return {
       status: true,
       error: [],

@@ -86,7 +86,6 @@ export async function PUT(req, { params }) {
 
     return Response.json({ m: "house deleted" }, { status: 200 });
   } catch (e) {
-    console.log(e);
     return Response.json({ m: "error" }, { status: 500 });
   }
 }

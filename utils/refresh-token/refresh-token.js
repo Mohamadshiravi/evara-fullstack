@@ -32,7 +32,5 @@ export default async function RefreshToken() {
 
   const token = await JenerateAccessToken({ email: isRefreshForUs.email });
 
-  console.log("token - refresh");
-
   return { user: isRefreshForUs, token };
 }

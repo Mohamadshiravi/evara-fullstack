@@ -78,7 +78,6 @@ export default async function LogInHandler(prevState, formData) {
       },
     };
   } catch (e) {
-    console.log(e);
     return {
       status: false,
       error: e.errors || ["error"],

@@ -24,7 +24,6 @@ export default function UserSaved() {
         const userHouse = await axios.get(`/api/saved/${theUser._id}`);
         setHouse(userHouse.data.data);
         setLoading(false);
-        console.log(userHouse);
       }
     }
     FetchUserSaved();
