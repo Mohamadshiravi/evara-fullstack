@@ -438,84 +438,8 @@ export default function HomeHeader(prop) {
         id="header-cover"
         className="relative h-[300px] bg-no-repeat bg-cover bg-center"
       >
-        <div className="absolute top-0 left-0 w-full h-full dark:bg-zinc-800/70 bg-green-800/50 backdrop-blur-[2px]">
-          <nav
-            data-aos-once="true"
-            data-aos="fade-down"
-            className="flex justify-between items-center sm:p-8 px-4 py-8 text-sm"
-          >
-            <div className="flex items-center gap-4 text-white">
-              <Button
-                dir="ltr"
-                onPress={() => {
-                  router.push("/new-house");
-                }}
-                variant="shadow"
-                color="primary"
-                radius="sm"
-              >
-                ثبت رایگان ملک
-              </Button>
-              {userData ? (
-                <div className="border-x-2 border-zinc-200 dark:border-zinc-700 sm:px-3 px-2 dark:text-zinc-200">
-                  <UserDetailsDropdown user={userData} />
-                </div>
-              ) : (
-                <Link
-                  href={"/auth/login"}
-                  className="hover:text-emerald-500 border-x-2 border-zinc-200 dark:border-zinc-700 sm:px-3 px-2 transition moraba-bold dark:text-zinc-200 text-lg text-zinc-700"
-                >
-                  ورود
-                </Link>
-              )}
-              <DarkModeBtn />
-            </div>
-            <div className="md:flex items-center gap-8 hidden moraba-bold text-sm">
-              <Link
-                href={"/"}
-                className={`${
-                  path === "/" && "border-b-[3px]"
-                } text-zinc-100 hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
-              >
-                خانه
-              </Link>
-              <Link
-                href={"/allhomes"}
-                className={`${
-                  path === "/allhomes" && "border-b-[3px]"
-                } text-zinc-100 hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
-              >
-                املاک
-              </Link>
-              <Link
-                href={"/about-us"}
-                className={`${
-                  path === "/about-us" && "border-b-[3px]"
-                } text-zinc-100 hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
-              >
-                درباره ما
-              </Link>
-              <Link
-                href={"/about-site"}
-                className={`${
-                  path === "/about-site" && "border-b-[3px]"
-                } text-zinc-100 hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
-              >
-                درباره سایت
-              </Link>
-            </div>
-            <div className="text-4xl font-black text-emerald-600 md:block hidden">
-              EVARA
-            </div>
-            <button
-              onClick={() => {
-                setIsMenuOpen(true);
-              }}
-              className="md:hidden text-white text-3xl hover:text-emerald-600 transition"
-            >
-              <TiThMenu />
-            </button>
-          </nav>
+        <div className="absolute top-0 left-0 w-full h-full dark:bg-zinc-800/70 bg-green-900/40 backdrop-blur-[2px]">
+          <div className="h-[80px]"></div>
           <h1 className="sm:mt-10 md:text-5xl sm:text-4xl flex sm:flex-row flex-col justify-center gap-2 text-4xl sm:px-12 text-white text-center moraba-bold">
             <span>بگذارید</span>
             <Swiper

@@ -1,8 +1,8 @@
 import Footer from "@/components/module/footer";
 import AllHomes from "@/components/template/all-homes";
-import HomeHeader from "@/components/module/home-header";
 import evaraHouseModel from "@/models/evara-house";
 import ConnectTODB from "@/config/connect-to-DB";
+import BreadCrumb from "@/components/module/bread-crumb";
 
 export default async function AllHomePage() {
   ConnectTODB();
@@ -11,8 +11,8 @@ export default async function AllHomePage() {
   });
   return (
     <>
-      <HomeHeader />
-      <main className="md:mt-0 mt-36">
+      <BreadCrumb route={"همه املاک"} />
+      <main className="pt-16">
         <AllHomes allHouse={JSON.parse(JSON.stringify(allHouseSorted))} />
       </main>
       <Footer />

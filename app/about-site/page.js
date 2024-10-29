@@ -1,13 +1,13 @@
 import Image from "next/image";
 import profImage from "@/public/images/guest.jpg";
 import Footer from "@/components/module/footer";
-import HomeHeader from "@/components/module/home-header";
+import BreadCrumb from "@/components/module/bread-crumb";
 
 export default function AboutSitePage() {
   return (
     <>
-      <HomeHeader />
-      <main className="md:mt-20 mt-48 sm:px-20 px-6">
+      <BreadCrumb route={"درباره سایت"} />
+      <main className="py-24 sm:px-20 px-6">
         <section className="my-10">
           <h2 className="moraba-bold md:text-4xl text-2xl text-headcolor">
             برنامه نویس فرانت اند :

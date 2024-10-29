@@ -55,6 +55,9 @@ body {
 #header-cover {
   background-image: url(/images/14-04-26A.jpg);
 }
+#breadCrumb-cover {
+  background-image: url(/images/14-04-26A.jpg);
+}
 #animate-fade {
   animation: fadeInDownBig 0.4s ease;
 }

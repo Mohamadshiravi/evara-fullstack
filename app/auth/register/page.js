@@ -43,7 +43,7 @@ export default function Register() {
     }
   }, [state]);
   return (
-    <section className="flex py-28 bg-gray-100 dark:bg-zinc-900 items-center justify-center">
+    <section className="flex py-32 bg-gray-100 dark:bg-zinc-900 items-center justify-center">
       <div className="bg-white dark:bg-zinc-800 dark:text-white shadow-lg p-8 rounded-lg lg:w-4/12 md:w-6/12 sm:w-10/12 w-11/12">
         <h1 className="text-center text-emerald-600 font-black text-4xl">
           EVARA

@@ -19,6 +19,9 @@ export function Header() {
   const [userData, setUserData] = useState(false);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [darkText, setDarkText] = useState(false);
+
   useEffect(() => {
     async function fetchUserData() {
       const isUser = await IsUserLogedIn();
@@ -41,13 +44,29 @@ export function Header() {
       window.removeEventListener("scroll", HandleNavBar);
     };
   }, []);
+
+  useEffect(() => {
+    if (
+      path === "/auth/login" ||
+      path === "/auth/register" ||
+      path === "/new-house"
+    ) {
+      setDarkText(true);
+    } else {
+      setDarkText(false);
+    }
+  });
   return (
     <>
       <nav
-        id="animate-fade"
+        id={`${isNavTop ? "animate-fade" : "noID"}`}
         className={`${
-          isNavTop ? "flex" : "hidden"
-        } dark:bg-zinc-800 shadow-xl justify-between transition bg-white items-center px-4 md:py-1 py-3 fixed top-0 left-0 z-50 w-full text-sm`}
+          isNavTop ? "fixed px-4 md:py-1 py-3" : "absolute px-6 sm:py-3 py-4"
+        } ${
+          !isNavTop
+            ? "bg-transparent"
+            : `dark:bg-zinc-800 bg-white ${isNavTop && "shadow-lg"}`
+        }  justify-between flex transition items-center top-0 left-0 z-50 w-full text-sm`}
       >
         <div className="flex items-center gap-4 text-white">
           <Button
@@ -75,12 +94,18 @@ export function Header() {
           )}
           <DarkModeBtn />
         </div>
-        <div className="md:flex items-center gap-8 hidden moraba-bold text-sm">
+        <div
+          className={`md:flex items-center gap-8 hidden moraba-bold text-sm ${
+            !isNavTop && !darkText
+              ? "text-white"
+              : "text-zinc-800 dark:text-zinc-200"
+          } `}
+        >
           <Link
             href={"/"}
             className={`${
               path === "/" && "border-b-[3px]"
-            } text-zinc-700 dark:text-zinc-200 hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
+            }  hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
           >
             خانه
           </Link>
@@ -88,7 +113,7 @@ export function Header() {
             href={"/allhomes"}
             className={`${
               path === "/allhomes" && "border-b-[3px]"
-            } text-zinc-700 dark:text-zinc-200 hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
+            } hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
           >
             املاک
           </Link>
@@ -96,7 +121,7 @@ export function Header() {
             href={"/about-us"}
             className={`${
               path === "/about-us" && "border-b-[3px]"
-            } text-zinc-700 dark:text-zinc-200 hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
+            } hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
           >
             درباره ما
           </Link>
@@ -104,7 +129,7 @@ export function Header() {
             href={"/about-site"}
             className={`${
               path === "/about-site" && "border-b-[3px]"
-            } text-zinc-700 dark:text-zinc-200 hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
+            } hover:border-b-[3px] border-emerald-600 cursor-pointer transition`}
           >
             درباره سایت
           </Link>

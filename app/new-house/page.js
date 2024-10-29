@@ -449,7 +449,7 @@ export default function AddNewHomeSection() {
     HouseCreated();
   }, [state]);
   return (
-    <main className="bg-gray-100 dark:bg-zinc-900 sm:py-20 py-6">
+    <main className="bg-gray-100 dark:bg-zinc-900 sm:pt-36 pt-28 pb-16">
       <section className="bg-white dark:bg-zinc-800 m-auto rounded-lg shadow-lg w-11/12 py-10 sm:px-10 px-4">
         <h1 className="text-center text-emerald-600 font-black text-5xl">
           EVARA
