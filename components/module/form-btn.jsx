@@ -15,7 +15,7 @@ export default function FormBtn({ children, className }) {
       radius="sm"
       isLoading={pending}
     >
-      {children}
+      {!pending && children}
     </Button>
   );
 }
