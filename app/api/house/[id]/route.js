@@ -33,7 +33,7 @@ export async function DELETE(req, { params }) {
         value: refreshToken.token,
         path: "/",
         httpOnly: true,
-        maxAge: 60 * 60 * 1000,
+        maxAge: 60 * 60 * 1000 * 24,
       });
     }
     ConnectTODB();
@@ -72,7 +72,7 @@ export async function PUT(req, { params }) {
         value: refreshToken.token,
         path: "/",
         httpOnly: true,
-        maxAge: 60 * 60 * 1000,
+        maxAge: 60 * 60 * 1000 * 24,
       });
     }
     ConnectTODB();
