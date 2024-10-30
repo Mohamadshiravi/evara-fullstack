@@ -8,22 +8,16 @@ import evaraHouseModel from "@/models/evara-house";
 import ConnectTODB from "@/config/connect-to-DB";
 
 export default async function Home() {
-  ConnectTODB();
-  const allHouseSorted = await evaraHouseModel.find({ queued: false }, null, {
-    sort: "-_id",
-  });
-  const allHouse = await evaraHouseModel.find({ queued: false });
-
   return (
     <>
       <HomeHeader />
       <main className="overflow-hidden sm:p-10 p-4">
-        <SpecialSLider houses={JSON.parse(JSON.stringify(allHouse))} />
+        <SpecialSLider />
         <EvaraAbout />
-        <RecentlySLider houses={JSON.parse(JSON.stringify(allHouseSorted))} />
+        <RecentlySLider />
         <br />
         <br />
-        <AllHomes allHouse={JSON.parse(JSON.stringify(allHouseSorted))} />
+        <AllHomes />
       </main>
       <Footer />
     </>

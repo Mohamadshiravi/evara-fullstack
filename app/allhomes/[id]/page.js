@@ -18,7 +18,7 @@ import evaraHouseModel from "@/models/evara-house";
 export default async function HomeDetailsPage({ params }) {
   const currentHome = await evaraHouseModel.findOne({ _id: params.id });
   return (
-    <section className="sm:p-10 p-4 bg-white dark:bg-zinc-900 dark:text-zinc-200">
+    <section className="pt-24 pb-10 sm:px-10 px-4 bg-white dark:bg-zinc-900 dark:text-zinc-200">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="moraba-bold text-3xl">{currentHome.title}</h1>

@@ -6,11 +6,22 @@ import { MdOutline3dRotation } from "react-icons/md";
 import { TbView360Number } from "react-icons/tb";
 
 import HomePhotoSlider from "@/components/template/home/home-photo-slider";
-import { useState } from "react";
-import MapSection from "./map-section";
+import { useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 
 export default function HomePageTabs({ images }) {
   const [tab, setTab] = useState("images");
+
+  const MapSection = useMemo(
+    () =>
+      dynamic(() => import("./map-section"), {
+        loading: () => (
+          <div className="w-full h-full rounded-lg bg-gray-300 dark:bg-zinc-700 animate-pulse"></div>
+        ),
+        ssr: false,
+      }),
+    []
+  );
   return (
     <>
       <section className="w-full aspect-video overflow-hidden rounded-lg shadow-md">

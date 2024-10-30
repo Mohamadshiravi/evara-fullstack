@@ -1,7 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import { HomeCard } from "../module/home-card";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export default function AllHomes({ allHouse }) {
+export default function AllHomes() {
+  const [house, setHouse] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function FetchUserHouse() {
+      setLoading(true);
+
+      const userHouse = await axios.get(`/api/house`);
+      setHouse(userHouse.data.data);
+
+      setLoading(false);
+    }
+    FetchUserHouse();
+  }, []);
   return (
     <section data-aos="fade-up-right">
       <div className="dark:bg-zinc-800 bg-white rounded-lg">
@@ -9,7 +27,7 @@ export default function AllHomes({ allHouse }) {
           همه اگهی ها
         </h1>
         <div className="mt-2 p-4 grid xl:grid-cols-[3fr_3fr_3fr_3fr] lg:grid-cols-[4fr_4fr_4fr] sm:grid-cols-[6fr_6fr] grid-cols-[1fr] gap-4">
-          {allHouse.map((e, i) => (
+          {house.map((e, i) => (
             <HomeCard
               key={i}
               img={e.images[0]}
@@ -23,8 +41,15 @@ export default function AllHomes({ allHouse }) {
               meter={e.meter}
             />
           ))}
+          {loading &&
+            Array.from({ length: 6 }).map((e, i) => (
+              <div
+                key={i}
+                className="w-full h-[400px] rounded-lg bg-gray-300 dark:bg-zinc-600 animate-pulse"
+              ></div>
+            ))}
         </div>
-        {allHouse.length === 0 && (
+        {!loading && house.length === 0 && (
           <div className="h-[300px] flex items-center justify-center flex-col gap-4">
             <h2 className="text-3xl text-center">
               هنوز هیچ خانه ای اضافه / تایید نشده

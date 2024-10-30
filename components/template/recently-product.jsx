@@ -5,9 +5,26 @@ import { Autoplay } from "swiper/modules";
 import { HomeCard } from "../module/home-card";
 import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export function RecentlySLider({ houses }) {
+export function RecentlySLider() {
   const Router = useRouter();
+
+  const [house, setHouse] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function FetchUserHouse() {
+      setLoading(true);
+
+      const userHouse = await axios.get(`/api/house`);
+      setHouse(userHouse.data.data);
+
+      setLoading(false);
+    }
+    FetchUserHouse();
+  }, []);
   return (
     <section
       data-aos="fade-up-left"
@@ -36,7 +53,7 @@ export function RecentlySLider({ houses }) {
             },
           }}
         >
-          {houses.map((e, i) => (
+          {house.map((e, i) => (
             <SwiperSlide key={i}>
               <HomeCard
                 img={e.images[0]}
@@ -51,8 +68,17 @@ export function RecentlySLider({ houses }) {
               />
             </SwiperSlide>
           ))}
+          {loading &&
+            Array.from({ length: 6 }).map((e, i) => (
+              <SwiperSlide>
+                <div
+                  key={i}
+                  className="w-full h-[400px] rounded-lg bg-gray-300 dark:bg-zinc-600 animate-pulse"
+                ></div>
+              </SwiperSlide>
+            ))}
         </Swiper>
-        {houses.length === 0 && (
+        {!loading && house.length === 0 && (
           <div className="h-[250px] flex items-center justify-center flex-col gap-4">
             <h2 className="text-3xl text-center">
               هنوز هیچ خانه ای اضافه / تایید نشده
