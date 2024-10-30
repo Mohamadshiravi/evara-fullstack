@@ -12,23 +12,22 @@ export async function GET() {
       return Response.json({ m: "user token invalid" }, { status: 401 });
     }
 
-    const isTokenValid = await VerifyAccessToken(userToken);
+    const isTokenValid = VerifyAccessToken(userToken);
 
     //refresh token here
     if (!isTokenValid) {
-      const refreshToken = await RefreshToken();
+      const refreshToken = RefreshToken();
       if (!refreshToken) {
         return Response.json({ m: "user token invalid" }, { status: 401 });
       } else {
-        return Response.json(
-          { data: refreshToken.user },
-          {
-            status: 200,
-            headers: {
-              "Set-Cookie": `token=${refreshToken.token};path=/;httpOnly=true`,
-            },
-          }
-        );
+        cookies().set({
+          name: "token",
+          value: refreshToken.token,
+          path: "/",
+          httpOnly: true,
+          maxAge: 60 * 60 * 1000 * 24,
+        });
+        return Response.json({ data: refreshToken.user });
       }
     }
 
