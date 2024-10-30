@@ -90,11 +90,8 @@ export function SpecialSLider() {
           ))}
           {loading &&
             Array.from({ length: 6 }).map((e, i) => (
-              <SwiperSlide>
-                <div
-                  key={i}
-                  className="w-full h-[400px] rounded-lg bg-gray-300 dark:bg-zinc-600 animate-pulse"
-                ></div>
+              <SwiperSlide key={i}>
+                <div className="w-full h-[400px] rounded-lg bg-gray-300 dark:bg-zinc-600 animate-pulse"></div>
               </SwiperSlide>
             ))}
         </Swiper>

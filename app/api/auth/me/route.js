@@ -16,7 +16,7 @@ export async function GET() {
 
     //refresh token here
     if (!isTokenValid) {
-      const refreshToken = RefreshToken();
+      const refreshToken = await RefreshToken();
       if (!refreshToken) {
         return Response.json({ m: "user token invalid" }, { status: 401 });
       } else {
@@ -27,6 +27,8 @@ export async function GET() {
           httpOnly: true,
           maxAge: 60 * 60 * 1000 * 24,
         });
+        console.log(refreshToken);
+
         return Response.json({ data: refreshToken.user });
       }
     }

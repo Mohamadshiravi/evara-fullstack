@@ -25,6 +25,7 @@ export function Header() {
   useEffect(() => {
     async function fetchUserData() {
       const isUser = await IsUserLogedIn();
+
       setUserData(isUser);
     }
     fetchUserData();

@@ -19,8 +19,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function UserDetailsDropdown({ user }) {
-  const [fileInp, setFileInp] = useState(null);
-
   const [imgSrc, setImgSrc] = useState("");
 
   const path = usePathname();
@@ -33,26 +31,23 @@ export default function UserDetailsDropdown({ user }) {
     "/uploads/avatar/66f230da90a04.png",
     "/uploads/avatar/657aa3ce3b26c.jpg",
   ]);
-  useEffect(() => {
-    async function ChangeUserAvatar() {
-      const res = await axios.post("/api/avatar", {
-        src: fileInp,
-        userID: user._id,
-      });
-      setImgSrc(fileInp);
-      newToast("عکس پروفایل شما تغییر کرد");
-      setInterval(() => {
-        location.reload();
-      }, 1000);
-    }
-    if (fileInp) {
-      ChangeUserAvatar();
-    }
-  }, [fileInp]);
 
   useEffect(() => {
     setImgSrc(user.avatar || "/images/guest.jpg");
   }, []);
+
+  async function ChangeUserAvatar(src) {
+    if (imgSrc === src) {
+      return false;
+    } else {
+      await axios.post("/api/avatar", {
+        src: src,
+        userID: user._id,
+      });
+      setImgSrc(src);
+      newToast("عکس پروفایل شما تغییر کرد");
+    }
+  }
   return (
     <Dropdown backdrop="blur" radius="sm" showArrow>
       <DropdownTrigger>
@@ -89,7 +84,7 @@ export default function UserDetailsDropdown({ user }) {
             {imagesSrc.map((e, i) => (
               <div
                 key={i}
-                onClick={() => setFileInp(e)}
+                onClick={() => ChangeUserAvatar(e)}
                 className={` ${
                   e === imgSrc &&
                   "border-2 overflow-hidden rounded-full border-emerald-600 p-1"
