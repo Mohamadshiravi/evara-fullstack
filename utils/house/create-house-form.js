@@ -46,7 +46,7 @@ export default async function AddNewHouseHandler(prevState, formData) {
   let theUser = null;
 
   //Auth check
-  const userToken = cookies().get("token").value;
+  const userToken = cookies().get("token")?.value;
 
   if (!userToken) {
     return {
