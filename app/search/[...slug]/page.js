@@ -59,15 +59,16 @@ export default async function SearchSection({ params, searchParams }) {
           <section className="sm:mt-20 mt-10 w-full grid lg:grid-cols-[4fr_4fr_4fr] md:grid-cols-[6fr_6fr] gap-4">
             {searchedHouse.map((e, i) => (
               <HomeCard
-                img={e.images[0]}
-                id={e._id}
-                title={e.title}
-                city={e.city}
-                area={e.address}
-                price={e.price}
-                room={e.room}
-                floor={e.floor}
-                meter={e.meter}
+                key={i}
+                img={JSON.parse(JSON.stringify(e.images[0]) || null)}
+                id={JSON.parse(JSON.stringify(e._id))}
+                title={JSON.parse(JSON.stringify(e.title))}
+                city={JSON.parse(JSON.stringify(e.city))}
+                area={JSON.parse(JSON.stringify(e.address))}
+                price={JSON.parse(JSON.stringify(e.price))}
+                room={JSON.parse(JSON.stringify(e.room))}
+                floor={JSON.parse(JSON.stringify(e.floor))}
+                meter={JSON.parse(JSON.stringify(e.meter))}
               />
             ))}
             {searchedHouse.length === 0 && (
