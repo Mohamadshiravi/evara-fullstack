@@ -14,8 +14,11 @@ import { IoArrowBack } from "react-icons/io5";
 import Link from "next/link";
 import HomePageTabs from "@/components/template/home/home-details-tab";
 import evaraHouseModel from "@/models/evara-house";
+import ConnectTODB from "@/config/connect-to-DB";
 
 export default async function HomeDetailsPage({ params }) {
+  ConnectTODB();
+
   const currentHome = await evaraHouseModel.findOne({ _id: params.id });
   return (
     <section className="pt-24 pb-10 sm:px-10 px-4 bg-white dark:bg-zinc-900 dark:text-zinc-200">
