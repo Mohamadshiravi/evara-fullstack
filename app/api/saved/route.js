@@ -9,7 +9,7 @@ export async function POST(req) {
   const { houseID } = await req.json();
 
   try {
-    const userToken = cookies().get("token").value;
+    const userToken = cookies().get("token")?.value;
 
     if (!userToken) {
       return Response.json({ m: "user token invalid" }, { status: 401 });

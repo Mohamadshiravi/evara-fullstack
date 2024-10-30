@@ -96,35 +96,36 @@ export default async function AddNewHouseHandler(prevState, formData) {
     const meter = formData.get("meter");
     const price = formData.get("price");
 
-    const imagesLength = formData.get("imagesLength");
+    //const imagesLength = formData.get("imagesLength");
 
     ConnectTODB();
     let imagesPathArray = [];
 
     //upload house images
-    const startNameImages = Date.now();
-    if (imagesLength >= 1) {
-      Array.from({ length: imagesLength }).map(async (e, i) => {
-        const img = formData.get(`img${i}`);
 
-        const bufferedImg = Buffer.from(await img.arrayBuffer());
-        const imgName = `${startNameImages}-${i}-${img.name}`;
-        const imgPath = path.join(
-          process.cwd(),
-          `/public/uploads/home/${imgName}`
-        );
+    // const startNameImages = Date.now();
+    // if (imagesLength >= 1) {
+    //   Array.from({ length: imagesLength }).map(async (e, i) => {
+    //     const img = formData.get(`img${i}`);
 
-        writeFileSync(imgPath, bufferedImg);
-      });
-      //create path again without async
-      Array.from({ length: imagesLength }).map((e, i) => {
-        const img = formData.get(`img${i}`);
-        const imgName = `${startNameImages}-${i}-${img.name}`;
+    //     const bufferedImg = Buffer.from(await img.arrayBuffer());
+    //     const imgName = `${startNameImages}-${i}-${img.name}`;
+    //     const imgPath = path.join(
+    //       process.cwd(),
+    //       `/public/uploads/home/${imgName}`
+    //     );
 
-        const imgPath = `/uploads/home/${imgName}`;
-        imagesPathArray.push(imgPath);
-      });
-    }
+    //     writeFileSync(imgPath, bufferedImg);
+    //   });
+    //   //create path again without async
+    //   Array.from({ length: imagesLength }).map((e, i) => {
+    //     const img = formData.get(`img${i}`);
+    //     const imgName = `${startNameImages}-${i}-${img.name}`;
+
+    //     const imgPath = `/uploads/home/${imgName}`;
+    //     imagesPathArray.push(imgPath);
+    //   });
+    // }
 
     //data validation
     await schema.validate(

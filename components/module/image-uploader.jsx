@@ -11,7 +11,7 @@ export default function ImgInputRealTime({ GetValueHandler, name }) {
         <input
           onChange={ShowImgUserSelected}
           type="file"
-          className={`w-0 h-0`}
+          className={`translate-x-[5000px] w-0 h-0`}
           accept=".jpg, .jpeg, .webp, .png"
           name={name}
         />

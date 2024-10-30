@@ -5,7 +5,7 @@ import evaraUserModel from "@/models/evara-user";
 
 export default async function IsUserLogedInServer() {
   try {
-    const userToken = cookies().get("token").value;
+    const userToken = cookies().get("token")?.value;
 
     if (!userToken) {
       return false;
