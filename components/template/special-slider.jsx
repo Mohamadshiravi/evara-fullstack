@@ -4,9 +4,11 @@ import { SwiperSlide, Swiper } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { HomeCard } from "../module/home-card";
 import { Button } from "@nextui-org/react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export function SpecialSLider({ houses }) {
+  console.log(houses);
+
   const Router = useRouter();
   return (
     <section
