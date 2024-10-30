@@ -6,8 +6,6 @@ import * as yup from "yup";
 import { VerifyAccessToken } from "../auth/token-functions";
 import { cookies } from "next/headers";
 import evaraHouseModel from "@/models/evara-house";
-import path from "path";
-import { writeFileSync } from "fs";
 import RefreshToken from "../refresh-token/refresh-token";
 
 const schema = yup.object().shape({
