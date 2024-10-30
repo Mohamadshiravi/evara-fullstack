@@ -12,7 +12,7 @@ export default async function AllHomePage() {
   return (
     <>
       <BreadCrumb route={"همه املاک"} />
-      <main className="pt-16">
+      <main className="sm:p-10 p-4">
         <AllHomes allHouse={JSON.parse(JSON.stringify(allHouseSorted))} />
       </main>
       <Footer />

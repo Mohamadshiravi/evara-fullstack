@@ -69,7 +69,7 @@ export default async function AddNewHouseHandler(prevState, formData) {
     };
   }
 
-  const isTokenValid = await VerifyAccessToken(userToken);
+  const isTokenValid = VerifyAccessToken(userToken);
 
   if (!isTokenValid) {
     const refreshToken = await RefreshToken();
@@ -78,34 +78,37 @@ export default async function AddNewHouseHandler(prevState, formData) {
         status: false,
         error: ["لطفا ابتدا یک اکانت بسازید"],
       };
+    } else {
+      cookies().set({
+        name: "token",
+        value: refreshToken.token,
+        path: "/",
+        httpOnly: true,
+        maxAge: 60 * 60 * 1000 * 24,
+      });
+      theUser = refreshToken.user;
     }
-    cookies().set({
-      name: "token",
-      value: refreshToken.token,
-      path: "/",
-      httpOnly: true,
-      maxAge: 60 * 60 * 1000,
-    });
-
+  } else {
     theUser = await evaraUserModel.findOne(
-      { email: isTokenValid.email || refreshToken.user.email },
+      { email: isTokenValid.email },
       "-__v -password"
     );
   }
 
-  ConnectTODB();
   //end auth
 
   try {
+    ConnectTODB();
     let imagesPathArray = [];
 
     //upload house images
+    const startNameImages = Date.now();
     if (imagesLength >= 1) {
       Array.from({ length: imagesLength }).map(async (e, i) => {
         const img = formData.get(`img${i}`);
 
         const bufferedImg = Buffer.from(await img.arrayBuffer());
-        const imgName = `${title}-${province}-${city}-${i}-${img.name}`;
+        const imgName = `${startNameImages}-${i}-${img.name}`;
         const imgPath = path.join(
           process.cwd(),
           `/public/uploads/home/${imgName}`
@@ -116,9 +119,9 @@ export default async function AddNewHouseHandler(prevState, formData) {
       //create path again without async
       Array.from({ length: imagesLength }).map((e, i) => {
         const img = formData.get(`img${i}`);
-        const imgName = `${title}-${province}-${city}-${i}-${img.name}`;
+        const imgName = `${startNameImages}-${i}-${img.name}`;
 
-        const imgPath = `http://localhost:3000/uploads/home/${imgName}`;
+        const imgPath = `/uploads/home/${imgName}`;
         imagesPathArray.push(imgPath);
       });
     }

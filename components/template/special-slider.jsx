@@ -12,7 +12,7 @@ export function SpecialSLider({ houses }) {
     <section
       data-aos-once="true"
       data-aos="fade-up-left"
-      className="lg:mt-16 md:flex-row flex-col md:mt-28 mt-[200px] w-[95%] m-auto h-auto overflow-hidden rounded-lg shadow-xl flex"
+      className="lg:mt-16 md:flex-row flex-col md:mt-28 mt-[200px] h-auto overflow-hidden rounded-lg shadow-xl flex"
     >
       <div className="relative md:w-3/12 w-full flex flex-col justify-between pb-4 px-4 bg-gray-200 dark:bg-zinc-800 dark:text-white">
         <div>

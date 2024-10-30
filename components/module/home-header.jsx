@@ -438,7 +438,7 @@ export default function HomeHeader(prop) {
         id="header-cover"
         className="relative h-[300px] bg-no-repeat bg-cover bg-center"
       >
-        <div className="absolute top-0 left-0 w-full h-full dark:bg-zinc-800/70 bg-green-900/40 backdrop-blur-[2px]">
+        <div className="absolute top-0 left-0 w-full h-full dark:bg-zinc-800/70 bg-green-900/40 backdrop-blur-[5px]">
           <div className="h-[80px]"></div>
           <h1 className="sm:mt-10 md:text-5xl sm:text-4xl flex sm:flex-row flex-col justify-center gap-2 text-4xl sm:px-12 text-white text-center moraba-bold">
             <span>بگذارید</span>

@@ -11,7 +11,7 @@ export function RecentlySLider({ houses }) {
   return (
     <section
       data-aos="fade-up-left"
-      className="w-[95%] dark:bg-zinc-800 m-auto bg-white rounded-lg mt-10"
+      className="dark:bg-zinc-800 bg-white rounded-lg mt-10"
     >
       <h1 className="after:content-[''] after:absolute after:top-0 md:after:left-[45%] after:left-0 md:after:w-[100px] after:w-full after:h-[5px] after:bg-emerald-600 relative text-center moraba-bold w-full m-auto text-4xl py-4 dark:text-white">
         اگهی های اخیر

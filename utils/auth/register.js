@@ -61,7 +61,7 @@ export default async function RegisterHandler(prevState, formData) {
       value: accesstoken,
       path: "/",
       httpOnly: true,
-      maxAge: 60 * 60 * 1000,
+      maxAge: 60 * 60 * 1000 * 24,
     });
     cookies().set({
       name: "refresh-token",

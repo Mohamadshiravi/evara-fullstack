@@ -17,10 +17,12 @@ export default async function Home() {
   return (
     <>
       <HomeHeader />
-      <main className="overflow-hidden">
+      <main className="overflow-hidden sm:p-10 p-4">
         <SpecialSLider houses={JSON.parse(JSON.stringify(allHouse))} />
         <EvaraAbout />
         <RecentlySLider houses={JSON.parse(JSON.stringify(allHouseSorted))} />
+        <br />
+        <br />
         <AllHomes allHouse={JSON.parse(JSON.stringify(allHouseSorted))} />
       </main>
       <Footer />

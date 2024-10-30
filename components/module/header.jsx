@@ -148,7 +148,9 @@ export function Header() {
         </button>
         <div
           id="page-status"
-          className="bg-gradient-to-r from-emerald-500 to-blue-500 w-full h-[4px] absolute -bottom-1 left-0"
+          className={`${
+            isNavTop ? "block" : "hidden"
+          } bg-gradient-to-r from-emerald-500 to-blue-500 w-full h-[4px] absolute -bottom-1 left-0`}
         ></div>
       </nav>
       {userData.role === "admin" && (

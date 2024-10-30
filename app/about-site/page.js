@@ -7,8 +7,8 @@ export default function AboutSitePage() {
   return (
     <>
       <BreadCrumb route={"درباره سایت"} />
-      <main className="py-24 sm:px-20 px-6">
-        <section className="my-10">
+      <main className="sm:p-10 p-4">
+        <section className="">
           <h2 className="moraba-bold md:text-4xl text-2xl text-headcolor">
             برنامه نویس فرانت اند :
           </h2>

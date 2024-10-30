@@ -1,7 +1,9 @@
 "use client";
 
+import BreadCrumb from "@/components/module/bread-crumb";
 import { HomeCard } from "@/components/module/home-card";
 import IsUserLogedIn from "@/utils/user/is-user-logedin-client";
+import { Button } from "@nextui-org/react";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -30,7 +32,8 @@ export default function UserHouses() {
 
   return (
     <>
-      <main className={`sm:px-10 px-6 sm:py-20 py-8 h-[100dvh]`}>
+      <BreadCrumb route={"املاک من"} />
+      <main className="sm:p-10 p-4">
         <section className="bg-white dark:bg-zinc-800 rounded-md px-4 py-6">
           {!loading && house.length === 0 && (
             <div className="flex flex-col items-center justify-center w-full h-screen px-6">
@@ -38,15 +41,15 @@ export default function UserHouses() {
               <h1 className="moraba-bold sm:text-4xl text-3xl mt-3 text-center">
                 شما هیچ اگهی خانه ای ندارید
               </h1>
-              <p className="text-center shabnam mt-6 text-zinc-600 px-20">
+              <p className="text-center shabnam mt-6 text-zinc-600 sm:px-20 px-4">
                 با رفتن به بخش ثبت رایگان ملک میتوانید خانه خود را اگهی کنید
               </p>
-              <Link
-                href={"/new-house"}
+              <Button
+                onClick={() => router.push("/new-house")}
                 className="moraba-bold text-white px-8 py-2 bg-emerald-600 text-lg rounded-md mt-6"
               >
                 ثبت اگهی
-              </Link>
+              </Button>
             </div>
           )}
 
@@ -84,10 +87,10 @@ export default function UserHouses() {
           )}
           <div className="grid lg:grid-cols-[4fr_4fr_4fr] md:grid-cols-[6fr_6fr] gap-4">
             {loading &&
-              Array.from({ length: 3 }).map((e, i) => (
+              Array.from({ length: 6 }).map((e, i) => (
                 <div
                   key={i}
-                  className="bg-gray-200 w-full h-[400px] rounded-lg animate-pulse"
+                  className="bg-gray-200 dark:bg-zinc-600 w-full h-[400px] rounded-lg animate-pulse"
                 ></div>
               ))}
           </div>

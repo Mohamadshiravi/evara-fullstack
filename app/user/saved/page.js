@@ -9,6 +9,8 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Button } from "@nextui-org/react";
+import BreadCrumb from "@/components/module/bread-crumb";
 
 export default function UserSaved() {
   const router = useRouter();
@@ -31,11 +33,8 @@ export default function UserSaved() {
 
   return (
     <>
-      <main
-        className={`sm:px-10 px-6 pt-20 ${
-          house.length === 0 ? "pb-20" : "pb-40"
-        }`}
-      >
+      <BreadCrumb route={"ذخیره شده ها"} />
+      <main className="sm:p-10 p-4">
         <section className="bg-white dark:bg-zinc-800 rounded-md px-4 py-6">
           {!loading && house.length === 0 && (
             <div className="flex flex-col items-center justify-center w-full h-screen px-6">
@@ -43,16 +42,16 @@ export default function UserSaved() {
               <h1 className="moraba-bold sm:text-4xl text-3xl mt-3 text-center">
                 لیست ذخیره شده های شما خالی است
               </h1>
-              <p className="text-center shabnam mt-6 text-zinc-600 px-20">
+              <p className="text-center shabnam mt-6 text-zinc-600 sm:px-20 px-4">
                 شما هنوز هیچ محصولی در لیست ذخیره شده های خود ندارید. در صفحه
                 "خانه" خانه های جالب زیادی پیدا خواهید کرد.
               </p>
-              <Link
-                href={"/"}
+              <Button
+                onClick={() => router.push("/")}
                 className="moraba-bold text-white px-8 py-2 bg-emerald-600 text-lg rounded-md mt-6"
               >
                 بازگشت به خانه
-              </Link>
+              </Button>
             </div>
           )}
           {!loading && house.length !== 0 && (
@@ -76,7 +75,7 @@ export default function UserSaved() {
               Array.from({ length: 3 }).map((e, i) => (
                 <div
                   key={i}
-                  className="bg-gray-200 w-full h-[400px] rounded-lg animate-pulse"
+                  className="bg-gray-200 dark:bg-zinc-600 w-full h-[400px] rounded-lg animate-pulse"
                 ></div>
               ))}
           </div>

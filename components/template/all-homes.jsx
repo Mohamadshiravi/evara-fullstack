@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { HomeCard } from "../module/home-card";
-import { redirect } from "next/navigation";
 
 export default function AllHomes({ allHouse }) {
   return (
-    <section data-aos="fade-up-right" className="py-20">
-      <div className="w-[95%] dark:bg-zinc-800 m-auto bg-white rounded-lg">
+    <section data-aos="fade-up-right">
+      <div className="dark:bg-zinc-800 bg-white rounded-lg">
         <h1 className="after:content-[''] after:absolute after:top-0 md:after:left-[45%] after:left-0 md:after:w-[100px] after:w-full after:h-[5px] after:bg-emerald-600 relative text-center moraba-bold w-full m-auto text-4xl py-4 dark:text-white">
           همه اگهی ها
         </h1>
@@ -26,7 +25,7 @@ export default function AllHomes({ allHouse }) {
           ))}
         </div>
         {allHouse.length === 0 && (
-          <div className="h-[250px] flex items-center justify-center flex-col gap-4">
+          <div className="h-[300px] flex items-center justify-center flex-col gap-4">
             <h2 className="text-3xl text-center">
               هنوز هیچ خانه ای اضافه / تایید نشده
             </h2>
