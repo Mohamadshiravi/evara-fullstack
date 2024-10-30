@@ -51,9 +51,9 @@ export default async function RegisterHandler(prevState, formData) {
       };
     }
 
-    const hashedPass = await HashPass(response.password);
-    const accesstoken = await JenerateAccessToken({ email: response.email });
-    const refreshToken = await JenerateRefreshToken({ email: response.email });
+    const hashedPass = HashPass(response.password);
+    const accesstoken = JenerateAccessToken({ email: response.email });
+    const refreshToken = JenerateRefreshToken({ email: response.email });
 
     //set Token & refresh-token
     cookies().set({

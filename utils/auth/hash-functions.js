@@ -1,10 +1,10 @@
-import { compare, hash } from "bcryptjs";
+import { compareSync, hashSync } from "bcryptjs";
 
-export async function HashPass(password) {
-  const output = await hash(password, 12);
+export function HashPass(password) {
+  const output = hashSync(password, 12);
   return output;
 }
-export async function VerifyPass(password, hashedPassword) {
-  const output = await compare(password, hashedPassword);
+export function VerifyPass(password, hashedPassword) {
+  const output = compareSync(password, hashedPassword);
   return output;
 }

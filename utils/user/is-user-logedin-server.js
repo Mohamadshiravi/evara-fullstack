@@ -11,7 +11,7 @@ export default async function IsUserLogedInServer() {
       return false;
     }
 
-    const isTokenValid = await VerifyAccessToken(userToken);
+    const isTokenValid = VerifyAccessToken(userToken);
 
     if (!isTokenValid) {
       return false;

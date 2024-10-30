@@ -43,20 +43,6 @@ const schema = yup.object().shape({
 });
 
 export default async function AddNewHouseHandler(prevState, formData) {
-  const title = formData.get("title");
-  const province = formData.get("province");
-  const city = formData.get("city");
-  const address = formData.get("address");
-  const description = formData.get("description");
-  const room = formData.get("room");
-  const bathroom = formData.get("bathroom");
-  const toilet = formData.get("toilet");
-  const floor = formData.get("floor");
-  const meter = formData.get("meter");
-  const price = formData.get("price");
-
-  const imagesLength = formData.get("imagesLength");
-
   let theUser = null;
 
   //Auth check
@@ -98,6 +84,20 @@ export default async function AddNewHouseHandler(prevState, formData) {
   //end auth
 
   try {
+    const title = formData.get("title");
+    const province = formData.get("province");
+    const city = formData.get("city");
+    const address = formData.get("address");
+    const description = formData.get("description");
+    const room = formData.get("room");
+    const bathroom = formData.get("bathroom");
+    const toilet = formData.get("toilet");
+    const floor = formData.get("floor");
+    const meter = formData.get("meter");
+    const price = formData.get("price");
+
+    const imagesLength = formData.get("imagesLength");
+
     ConnectTODB();
     let imagesPathArray = [];
 

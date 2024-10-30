@@ -25,12 +25,12 @@ export default async function RefreshToken() {
     return false;
   }
 
-  const verifyRefToken = await VerifyRefreshToken(refToken);
+  const verifyRefToken = VerifyRefreshToken(refToken);
   if (!verifyRefToken) {
     return false;
   }
 
-  const token = await JenerateAccessToken({ email: isRefreshForUs.email });
+  const token = JenerateAccessToken({ email: isRefreshForUs.email });
 
   return { user: isRefreshForUs, token };
 }

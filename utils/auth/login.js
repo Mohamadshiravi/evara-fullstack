@@ -2,7 +2,7 @@
 
 import ConnectTODB from "@/config/connect-to-DB";
 import evaraUserModel from "@/models/evara-user";
-import { HashPass, VerifyPass } from "./hash-functions";
+import { VerifyPass } from "./hash-functions";
 import { JenerateAccessToken, JenerateRefreshToken } from "./token-functions";
 import { cookies } from "next/headers";
 
@@ -30,7 +30,7 @@ export default async function LogInHandler(prevState, formData) {
       };
     }
 
-    const checkPass = await VerifyPass(user.password, isAnyUserExist.password);
+    const checkPass = VerifyPass(user.password, isAnyUserExist.password);
 
     if (!checkPass) {
       return {
@@ -43,10 +43,10 @@ export default async function LogInHandler(prevState, formData) {
       };
     }
 
-    const accesstoken = await JenerateAccessToken({
+    const accesstoken = JenerateAccessToken({
       email: isAnyUserExist.email,
     });
-    const refreshToken = await JenerateRefreshToken({
+    const refreshToken = JenerateRefreshToken({
       email: isAnyUserExist.email,
     });
 
