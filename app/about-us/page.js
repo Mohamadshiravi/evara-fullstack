@@ -7,7 +7,7 @@ export default function AboutUsPage() {
     <>
       <BreadCrumb route={"درباره ما"} />
       <section className="w-full text-center sm:p-10 p-4 flex flex-col gap-16">
-        <h1 className="sm:text-8xl text-7xl text-emerald-600 font-black">
+        <h1 className="sm:text-8xl text-7xl text-emerald-600 font-black sm:mt-0 mt-8">
           Evara
         </h1>
         <div>

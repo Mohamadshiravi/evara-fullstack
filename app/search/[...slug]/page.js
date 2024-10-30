@@ -2,8 +2,6 @@ import { HomeCard } from "@/components/module/home-card";
 import HomeHeader from "@/components/module/home-header";
 import ConnectTODB from "@/config/connect-to-DB";
 import evaraHouseModel from "@/models/evara-house";
-import Link from "next/link";
-import { IoArrowBack } from "react-icons/io5";
 
 export default async function SearchSection({ params, searchParams }) {
   const decodedProvince = decodeURIComponent(params.slug[0]);
