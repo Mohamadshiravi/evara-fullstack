@@ -24,6 +24,6 @@ pnpm start
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-demo [https://evara.vercel.app](https://evara.vercel.app)
+demo [https://evara-deploy.vercel.app](https://evara-deploy.vercel.app)
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
